@@ -246,6 +246,18 @@ section:nth-child(odd) {
     width: 100%;
 }
 
+/* Smooth Fade-In Animation */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Modern About Section */
 #about {
     position: relative;
@@ -671,8 +683,4 @@ footer p {
 @keyframes fillSkill {
     from { width: 0; }
     to { width: var(--fill-width); }
-}
-
-.skill-level {
-    animation: fillSkill 2s forwards ease-out;
 }

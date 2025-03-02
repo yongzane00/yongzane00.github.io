@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Yong Zane's Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,8 +15,8 @@
             <nav>
                 <ul>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -24,7 +24,7 @@
     </header>
 
     <!-- About Section -->
-    <section id="about">
+    <section id="about" class="fade-in-up">
         <div class="container">
             <h2>About Me</h2>
             <div class="about-content">
@@ -35,7 +35,7 @@
     </section>
 
 <!-- Skills Section -->
-<section id="skills">
+<section id="skills" class="fade-in-up">
     <div class="container">
         <h2>My Skills</h2>
         <div class="skills-container">
@@ -44,37 +44,37 @@
                 <div class="skill">
                     <h4>Python</h4>
                     <div class="skill-bar">
-                        <div class="skill-level" style="width: 95%"></div>
+                        <div class="skill-level" style="width: 99%"></div>
                     </div>
                 </div>
                 <div class="skill">
                     <h4>MATLAB</h4>
                     <div class="skill-bar">
-                        <div class="skill-level" style="width: 90%"></div>
+                        <div class="skill-level" style="width: 70%"></div>
                     </div>
                 </div>
                 <div class="skill">
                     <h4>C/C++</h4>
                     <div class="skill-bar">
-                        <div class="skill-level" style="width: 85%"></div>
+                        <div class="skill-level" style="width: 70%"></div>
                     </div>
                 </div>
                 <div class="skill">
                     <h4>C#</h4>
                     <div class="skill-bar">
-                        <div class="skill-level" style="width: 85%"></div>
+                        <div class="skill-level" style="width: 80%"></div>
                     </div>
                 </div>
                 <div class="skill">
                     <h4>JavaScript</h4>
                     <div class="skill-bar">
-                        <div class="skill-level" style="width: 80%"></div>
+                        <div class="skill-level" style="width: 50%"></div>
                     </div>
                 </div>
                 <div class="skill">
                     <h4>SQL</h4>
                     <div class="skill-bar">
-                        <div class="skill-level" style="width: 85%"></div>
+                        <div class="skill-level" style="width: 80%"></div>
                     </div>
                 </div>
             </div>
@@ -84,13 +84,13 @@
                 <div class="skill">
                     <h4>PyTorch</h4>
                     <div class="skill-bar">
-                        <div class="skill-level" style="width: 90%"></div>
+                        <div class="skill-level" style="width: 95%"></div>
                     </div>
                 </div>
                 <div class="skill">
                     <h4>TensorFlow</h4>
                     <div class="skill-bar">
-                        <div class="skill-level" style="width: 85%"></div>
+                        <div class="skill-level" style="width: 80%"></div>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
 </section>
 
 <!-- Projects Section -->
-<section id="projects">
+<section id="projects" class="fade-in-up">
     <div class="container">
         <h2>My Projects</h2>
         <div class="projects-grid">
@@ -143,7 +143,7 @@
 </section>
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" class="fade-in-up">
         <div class="container">
             <h2>Contact Me</h2>
             <form>
@@ -169,44 +169,11 @@
         <div class="container">
             <p>&copy; 2025 yongzane00 All rights reserved.</p>
             <div class="social-links">
-                <a href="#">GitHub</a>
-                <a href="#">LinkedIn</a>
+                <a href="https://github.com/yongzane00">GitHub</a>
+                <a href="https://www.linkedin.com/in/zaneyong/">LinkedIn</a>
             </div>
         </div>
     </footer>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const toggleButton = document.getElementById("theme-toggle");
-            const body = document.body;
-
-            // Check for saved preference in localStorage
-            if (localStorage.getItem("theme") === "dark") {
-                body.classList.add("dark-theme");
-                toggleButton.textContent = "Light Mode ☀️";
-            }
-
-            toggleButton.addEventListener("click", function () {
-                if (body.classList.contains("dark-theme")) {
-                    body.classList.remove("dark-theme");
-                    localStorage.setItem("theme", "light");
-                    toggleButton.textContent = "Dark Mode 🌙";
-                } else {
-                    body.classList.add("dark-theme");
-                    localStorage.setItem("theme", "dark");
-                    toggleButton.textContent = "Light Mode ☀️";
-                }
-            });
-            
-            // Check user's system preference if no saved preference
-            if (!localStorage.getItem("theme")) {
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    body.classList.add("dark-theme");
-                    toggleButton.textContent = "Light Mode ☀️";
-                    localStorage.setItem("theme", "dark");
-                }
-            }
-        });
-    </script>
-    
+    <script src="main.js" defer></script>
 </body>
 </html>
