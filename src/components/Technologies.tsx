@@ -144,11 +144,6 @@ export default function Technologies() {
                   <h3 className="font-bold syntax-function text-lg group-hover:text-vscode-keyword transition-colors duration-300">
                     {tech.name}
                   </h3>
-                  {tech.projects && (
-                    <span className="text-xs syntax-comment bg-vscode-panel px-2 py-1 rounded">
-                      {tech.projects} projects
-                    </span>
-                  )}
                 </div>
 
                 {/* Experience Years */}

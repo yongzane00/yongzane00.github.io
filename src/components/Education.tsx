@@ -45,8 +45,7 @@ export default function Education() {
                 <div className="space-y-2">
                   <div className="flex items-center space-x-3">
                     <span className="syntax-success">▸</span>
-                    <span className="syntax-string">CGPA: 4.30/5.00</span>
-                    <span className="syntax-comment">(Distinction)</span>
+                    <span className="syntax-string">Honours (Distinction)</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <span className="syntax-success">▸</span>
