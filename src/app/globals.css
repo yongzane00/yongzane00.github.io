@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+  line-height: 1.7;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  transition: all 0.3s ease;
+}
+
+/* VS Code syntax highlighting classes */
+.syntax-keyword { color: #569cd6; }
+.syntax-string { color: #ce9178; }
+.syntax-function { color: #dcdcaa; }
+.syntax-variable { color: #9cdcfe; }
+.syntax-comment { color: #6a9955; }
