@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   title: 'Yong Zane — AI/ML Research Engineer @ A*STAR',
   description:
     'AI/ML Research Engineer at A*STAR (ARTC), Singapore. I build end-to-end AI solutions — from ML models and agentic/LLM tooling to the applications that ship them. 3 peer-reviewed publications (2025).',
+  icons: {
+    icon: '/icons/browser-tab-icon.png',
+    shortcut: '/icons/browser-tab-icon.png',
+    apple: '/icons/browser-tab-icon.png',
+  },
 }
 
 export default function RootLayout({
