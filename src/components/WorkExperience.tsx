@@ -1,144 +1,124 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { ChevronRight } from 'lucide-react'
+
+interface Experience {
+  title: string
+  company: string
+  period: string
+  type: string
+  logo: string
+  achievements: string[]
+  technologies: string[]
+}
+
+const experiences: Experience[] = [
+  {
+    title: 'AI/ML Research Engineer',
+    company: 'Advanced Remanufacturing and Technology Centre (ARTC), A*STAR',
+    period: 'Oct 2024 - Present',
+    type: 'Full Time',
+    logo: '/icons/astar-icon.png',
+    achievements: [
+      'Transforming ambiguous engineering problem statments into production-ready AI systems.',
+      'Designing and building AI tools that help engineers work more productively.',
+      'Scaling AI solutions with microservices, MCP servers and cloud-native infrastructure.',
+    ],
+    technologies: ['Python', 'MCP', 'RAG', 'LLM', 'VLM', 'CV', 'PyTorch', 'TensorFlow', 'CUDA', 'Linux', 'PostgreSQL', 'SQLite', 'Docker', 'Kubernetes', 'JavaScript', 'TypeScript', 'React'],
+  },
+  {
+    title: 'ML and Computer Vision Research Assistant',
+    company: 'School of Chemistry, Chemical Engineering and Biotechnology, NTU',
+    period: 'May 2024 - Jul 2024',
+    type: 'Part Time',
+    logo: '/icons/ntu-cceb-icon.jpg',
+    achievements: [
+      'Pushing the research frontier of iSCAT microscopy with machine learning.',
+      'Establishing the first large-scale foundational iSCAT microscopy dataset for protein characterization.',
+    ],
+    technologies: ['Python', 'OpenCV', 'Scikit-learn', 'ML', 'CV', 'Image Processing', 'Microscopy'],
+  },
+  {
+    title: 'Optical Engineer Intern',
+    company: 'Thermo Fisher Scientific Inc., Marsiling, Singapore',
+    period: 'Dec 2022 - Jul 2023',
+    type: 'Internship',
+    logo: '/icons/thermofisher-icon.png',
+    achievements: [
+      'Automating large-scale image quality analysis with image processing algorithms',
+      'Simulating fluorescence dye behaviour within the visible spectrum to validate research ideas',
+    ],
+    technologies: ['Python', 'OpenCV', 'Scikit-learn', 'ML', 'Image Processing', 'Optical Engineering', 'Simulation'],
+  },
+]
 
 export default function WorkExperience() {
-  const experiences = [
-    {
-      title: "Research Engineer",
-      company: "Advanced Remanufacturing and Technology Centre (ARTC), A*STAR",
-      period: "Oct 2024 – Present",
-      type: "Full Time",
-      logo: "/icons/astar-icon.png",
-      achievements: [
-        "Architected and deployed a highly available LangGraph-based multi-agent system for dynamic task decomposition in complex manufacturing pipelines, resulting in a 50% reduction in decision-making latency and enabling scalable workflow automation.",
-        "Fine-tuned state-of-the-art Vision-Language Models (VLMs) and object detection models leveraging both Transformer and CNN architectures for structured document parsing of 2D engineering drawings, increasing data ingestion throughput by 40%.",
-        "Engineered and productionized highly scalable backend microservices using FastAPI and ASP.NET, containerized via Docker, and orchestrated with Kubernetes, supporting critical operations and achieving 99.9% uptime.",
-        "Developed and shipped a multi-tenant Angular platform utilized by 10+ internal/external manufacturing teams for the real-time deployment, monitoring, and control of AI-powered workflows.",
-        "Integrated and enforced MLOps standards using MLflow for experiment tracking and inference monitoring across pipelines, reducing model deployment time from 2 days to 4 hours."
-      ],
-      technologies: ["LangGraph", "PyTorch", "FastAPI", "ASP.NET", "Docker", "Kubernetes", "Angular", "MLflow"]
-    },
-    {
-      title: "Machine Learning and Image Processing Research Assistant",
-      company: "School of Chemistry, Chemical Engineering and Biotechnology, NTU",
-      period: "May 2024 – Jul 2024",
-      type: "Part Time",
-      logo: "/icons/ntu-cceb-icon.jpg",
-      achievements: [
-        "Improved imaging sensitivity by 90% for single-particle tracking (SPT) through the implementation of unsupervised learning image denoising.",
-        "Built a foundational large-scale microscopy imaging dataset and trained a regression model to enable accurate and automated protein size prediction."
-      ],
-      technologies: ["Python", "OpenCV", "Machine Learning", "Image Processing", "Microscopy"]
-    },
-    {
-      title: "Optical Engineer Intern",
-      company: "Thermo Fisher Scientific Inc., Marsiling, Singapore",
-      period: "Dec 2022 – Jul 2023",
-      type: "Internship",
-      logo: "/icons/thermofisher-icon.png",
-      achievements: [
-        "Implemented image processing algorithms using OpenCV library to assess the optical performance of the instrument with a 25% acceleration of the feature extraction process while maintaining a 95% accuracy.",
-        "Applied scikit-learn regression to model fluorescence dye behaviour across light spectra, achieving 80% prediction accuracy."
-      ],
-      technologies: ["OpenCV", "Scikit-learn", "Python", "Image Processing", "Optical Engineering"]
-    }
-  ]
-
   return (
-    <section id="experience" className="py-20 bg-vscode-editor relative">
-      <div className="container mx-auto px-6">
-        <motion.div
-          className="max-w-6xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl font-bold mb-12 text-center">
-            <span className="syntax-comment">// </span>
-            <span className="syntax-keyword">Work Experience</span>
-          </h2>
+    <section id="experience" className="py-12 border-b border-vscode-border">
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-xl font-bold mb-6">
+          <span className="syntax-comment">// </span>
+          <span className="text-vscode-text">Experience</span>
+        </h2>
 
+        <div>
           {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              className="bg-vscode-sidebar border border-vscode-border rounded-2xl p-8 shadow-xl"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              viewport={{ once: true }}
-            >
-              {/* Company Header */}
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
-                <div className="flex items-start space-x-4">
-                  {/* Company Logo */}
-                  <div className="flex-shrink-0">
-                    <img
-                      src={exp.logo}
-                      alt={`${exp.company} Logo`}
-                      className="h-16 object-contain bg-white rounded-lg p-2 shadow-md"
-                    />
-                  </div>
-                  
-                  {/* Company Details */}
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">
-                      <span className="syntax-function">{exp.title}</span>
-                    </h3>
-                    <div className="text-lg syntax-variable mb-2">{exp.company}</div>
-                    <div className="flex items-center space-x-4 text-sm">
-                      <span className="syntax-string">{exp.period}</span>
-                      <span className="syntax-keyword">•</span>
-                      <span className="syntax-comment">{exp.type}</span>
+            <details key={index} className="group border-b border-vscode-border/60 last:border-0 py-5">
+              <summary>
+                <div className="flex items-start gap-3">
+                  <img
+                    src={exp.logo}
+                    alt={`${exp.company} logo`}
+                    className="w-11 h-11 rounded-md object-contain bg-white p-1 border border-vscode-border shrink-0 mt-0.5"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-baseline justify-between gap-4">
+                      <h3 className="font-semibold syntax-function">{exp.title}</h3>
+                      <span className="text-sm syntax-string whitespace-nowrap shrink-0">{exp.period}</span>
+                    </div>
+                    <div className="flex items-center justify-between gap-4 mt-1">
+                      <span className="text-sm text-vscode-muted">
+                        {exp.company} · {exp.type}
+                      </span>
+                      <span className="text-xs text-vscode-muted inline-flex items-center gap-1 shrink-0">
+                        <ChevronRight size={13} className="details-chevron" /> details
+                      </span>
                     </div>
                   </div>
                 </div>
-              </div>
+              </summary>
 
-              {/* Achievements */}
-              <div className="space-y-4 mb-6">
-                <h4 className="text-lg font-semibold syntax-keyword">Key Achievements:</h4>
-                <ul className="space-y-3">
-                  {exp.achievements.map((achievement, achIndex) => (
-                    <motion.li
-                      key={achIndex}
-                      className="flex items-start space-x-3 text-sm leading-relaxed"
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, delay: achIndex * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <span className="syntax-success mt-1">▸</span>
-                      <span className="text-vscode-text">{achievement}</span>
-                    </motion.li>
+              <div className="sm:pl-14">
+                <ul className="mt-4 space-y-2.5">
+                  {exp.achievements.map((a, i) => (
+                    <li key={i} className="flex gap-2.5 text-sm leading-relaxed">
+                      <span className="syntax-success mt-0.5">▸</span>
+                      <span className="text-vscode-text">{a}</span>
+                    </li>
                   ))}
                 </ul>
-              </div>
 
-              {/* Technologies */}
-              <div>
-                <h4 className="text-sm font-semibold syntax-comment mb-3">Technologies Used:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {exp.technologies.map((tech, techIndex) => (
-                    <motion.span
-                      key={techIndex}
-                      className="bg-vscode-panel px-3 py-1 rounded-lg text-sm syntax-variable border border-vscode-border hover:bg-vscode-border transition-all duration-200"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: techIndex * 0.05 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.05 }}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {exp.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-xs px-2 py-0.5 rounded border border-vscode-border text-vscode-muted"
                     >
                       {tech}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </details>
           ))}
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   )
 }

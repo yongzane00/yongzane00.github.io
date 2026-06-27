@@ -1,72 +1,100 @@
 'use client'
 
+import { useState } from 'react'
+import { Download, Menu, X } from 'lucide-react'
+import ThemeToggle from './ThemeToggle'
+
+const RESUME_URL = '/assets/YongZane_Resume.pdf'
+
+const NAV_LINKS = [
+  { href: '#background', label: 'About' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#education', label: 'Education' },
+  { href: '#publications', label: 'Publications' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#technologies', label: 'Technologies' },
+]
+
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
-    <header className="bg-vscode-sidebar border-b border-vscode-border py-6 sticky top-0 z-50">
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center space-x-4">
-          <h1 className="text-3xl font-bold">
-            <span className="syntax-keyword">&gt; </span>
-            <span className="syntax-function">Yong</span>
-            <span className="text-vscode-text"> </span>
-            <span className="syntax-variable">Zane</span>
-            <span className="syntax-keyword animate-blink">_</span>
-          </h1>
-          
-          {/* Social Icons in Header */}
-          <div className="hidden md:flex items-center space-x-4 ml-8">
-            <a
-              href="https://scholar.google.com/citations?user=QQkv7XUAAAAJ&hl=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 bg-gray-200 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1 p-2"
-              title="Google Scholar"
-            >
-              <img 
-                src="/icons/google-scholar-icon.svg" 
-                alt="Google Scholar" 
-                className="w-6 h-6 filter brightness-0 hover:brightness-0 hover:invert hover:scale-110 transition-all duration-300"
-              />
-            </a>
-            <a
-              href="https://github.com/yongzane00"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 bg-gray-200 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1 p-2"
-              title="GitHub"
-            >
-              <img 
-                src="/icons/github-icon.svg" 
-                alt="GitHub" 
-                className="w-6 h-6 filter brightness-0 hover:brightness-0 hover:invert hover:scale-110 transition-all duration-300"
-              />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/zaneyong/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 bg-gray-200 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1 p-2"
-              title="LinkedIn"
-            >
-              <img 
-                src="/icons/linkedin-icon.svg" 
-                alt="LinkedIn" 
-                className="w-6 h-6 filter brightness-0 hover:brightness-0 hover:invert hover:scale-110 transition-all duration-300"
-              />
-            </a>
-          </div>
-        </div>
-        
-        <nav className="hidden lg:flex">
-          <ul className="flex space-x-6">
-            <li><a href="#background" className="syntax-variable hover:text-vscode-function transition-colors duration-300">Background</a></li>
-            <li><a href="#experience" className="syntax-variable hover:text-vscode-function transition-colors duration-300">Experience</a></li>
-            <li><a href="#publications" className="syntax-variable hover:text-vscode-function transition-colors duration-300">Publications</a></li>
-            <li><a href="#projects" className="syntax-variable hover:text-vscode-function transition-colors duration-300">Projects</a></li>
-            <li><a href="#technologies" className="syntax-variable hover:text-vscode-function transition-colors duration-300">Technologies</a></li>
+    <header className="sticky top-0 z-50 bg-vscode-bg/90 backdrop-blur border-b border-vscode-border">
+      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
+        {/* Name */}
+        <a href="#background" className="text-lg font-bold whitespace-nowrap" aria-label="Back to top">
+          <span className="syntax-keyword">&gt; </span>
+          <span className="syntax-function">Yong</span>
+          <span className="text-vscode-text"> </span>
+          <span className="syntax-variable">Zane</span>
+        </a>
+
+        {/* Desktop nav */}
+        <nav className="hidden lg:flex flex-1 justify-center">
+          <ul className="flex items-center gap-7 text-sm">
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-vscode-muted hover:text-vscode-keyword transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
+
+        {/* Right cluster */}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <a
+            href={RESUME_URL}
+            download
+            className="hidden sm:inline-flex items-center gap-1.5 border border-vscode-border hover:border-vscode-keyword text-vscode-text px-3 py-1.5 rounded-md text-sm transition-colors duration-200"
+          >
+            <Download size={15} /> Résumé
+          </a>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((o) => !o)}
+            className="lg:hidden w-9 h-9 flex items-center justify-center rounded-md text-vscode-muted hover:text-vscode-keyword hover:bg-vscode-panel transition-colors"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="lg:hidden border-t border-vscode-border bg-vscode-bg">
+          <nav className="max-w-5xl mx-auto px-6 py-4">
+            <ul className="flex flex-col gap-3 text-sm">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="block text-vscode-muted hover:text-vscode-keyword transition-colors duration-200"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={RESUME_URL}
+              download
+              onClick={() => setMenuOpen(false)}
+              className="inline-flex items-center gap-1.5 mt-4 border border-vscode-border hover:border-vscode-keyword text-vscode-text px-3 py-2 rounded-md text-sm transition-colors duration-200"
+            >
+              <Download size={15} /> Résumé
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   )
 }

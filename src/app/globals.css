@@ -2,21 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Theme tokens as space-separated RGB channels so Tailwind opacity utilities
+   (e.g. bg-vscode-success/15) keep working via rgb(var(--x) / <alpha-value>). */
+:root {
+  /* VS Code Light+ */
+  --vscode-bg: 255 255 255;
+  --vscode-sidebar: 246 246 246;
+  --vscode-editor: 255 255 255;
+  --vscode-panel: 240 240 240;
+  --vscode-border: 224 224 224;
+  --vscode-text: 30 30 30;
+  --vscode-muted: 96 103 112;
+  --vscode-comment: 0 128 0;
+  --vscode-keyword: 4 81 165;
+  --vscode-string: 163 21 21;
+  --vscode-function: 121 94 38;
+  --vscode-variable: 0 16 128;
+  --vscode-error: 205 49 49;
+  --vscode-success: 9 134 88;
+}
+
+.dark {
+  /* VS Code Dark+ */
+  --vscode-bg: 30 30 30;
+  --vscode-sidebar: 37 37 38;
+  --vscode-editor: 30 30 30;
+  --vscode-panel: 45 45 48;
+  --vscode-border: 60 60 66;
+  --vscode-text: 212 212 212;
+  --vscode-muted: 150 150 150;
+  --vscode-comment: 106 153 85;
+  --vscode-keyword: 86 156 214;
+  --vscode-string: 206 145 120;
+  --vscode-function: 220 220 170;
+  --vscode-variable: 156 220 254;
+  --vscode-error: 244 71 71;
+  --vscode-success: 78 201 176;
+}
+
 * {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
   line-height: 1.7;
-  background-color: #1e1e1e;
-  color: #d4d4d4;
-  transition: all 0.3s ease;
+  background-color: rgb(var(--vscode-bg));
+  color: rgb(var(--vscode-text));
 }
 
-/* VS Code syntax highlighting classes */
-.syntax-keyword { color: #569cd6; }
-.syntax-string { color: #ce9178; }
-.syntax-function { color: #dcdcaa; }
-.syntax-variable { color: #9cdcfe; }
-.syntax-comment { color: #6a9955; }
+/* Offset anchor jumps so headings clear the sticky header */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* VS Code syntax highlighting classes (theme-aware via variables) */
+.syntax-keyword { color: rgb(var(--vscode-keyword)); }
+.syntax-string { color: rgb(var(--vscode-string)); }
+.syntax-function { color: rgb(var(--vscode-function)); }
+.syntax-variable { color: rgb(var(--vscode-variable)); }
+.syntax-comment { color: rgb(var(--vscode-comment)); }
+
+/* Collapsible <details>: hide the native marker, rotate our own chevron */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+.details-chevron {
+  transition: transform 0.2s ease;
+}
+details[open] .details-chevron {
+  transform: rotate(90deg);
+}
+
+/* Respect users who prefer reduced motion (paired with MotionConfig in page.tsx) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

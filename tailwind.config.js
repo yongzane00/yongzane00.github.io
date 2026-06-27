@@ -9,20 +9,23 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Driven by CSS variables in globals.css (:root = light, .dark = dark) so the
+        // whole palette theme-switches. RGB-channel vars keep opacity utilities working.
         vscode: {
-          bg: '#1e1e1e',          // VS Code dark background
-          sidebar: '#252526',      // Sidebar background
-          editor: '#1e1e1e',       // Editor background
-          panel: '#2d2d30',        // Panel background
-          border: '#3e3e42',       // Border color
-          text: '#d4d4d4',         // Main text
-          comment: '#6a9955',      // Comments/secondary text
-          keyword: '#569cd6',      // Keywords/primary accent
-          string: '#ce9178',       // Strings/secondary accent
-          function: '#dcdcaa',     // Function names
-          variable: '#9cdcfe',     // Variables/links
-          error: '#f44747',        // Error/warning
-          success: '#4ec9b0',      // Success/highlight
+          bg: 'rgb(var(--vscode-bg) / <alpha-value>)',
+          sidebar: 'rgb(var(--vscode-sidebar) / <alpha-value>)',
+          editor: 'rgb(var(--vscode-editor) / <alpha-value>)',
+          panel: 'rgb(var(--vscode-panel) / <alpha-value>)',
+          border: 'rgb(var(--vscode-border) / <alpha-value>)',
+          text: 'rgb(var(--vscode-text) / <alpha-value>)',
+          muted: 'rgb(var(--vscode-muted) / <alpha-value>)',
+          comment: 'rgb(var(--vscode-comment) / <alpha-value>)',
+          keyword: 'rgb(var(--vscode-keyword) / <alpha-value>)',
+          string: 'rgb(var(--vscode-string) / <alpha-value>)',
+          function: 'rgb(var(--vscode-function) / <alpha-value>)',
+          variable: 'rgb(var(--vscode-variable) / <alpha-value>)',
+          error: 'rgb(var(--vscode-error) / <alpha-value>)',
+          success: 'rgb(var(--vscode-success) / <alpha-value>)',
         }
       },
       fontFamily: {

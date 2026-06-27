@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Yong Zane's Portfolio",
-  description: 'Machine Learning & Web Development Engineer passionate about building end-to-end solutions',
+  title: 'Yong Zane — AI/ML Research Engineer @ A*STAR',
+  description:
+    'AI/ML Research Engineer at A*STAR (ARTC), Singapore. I build end-to-end AI solutions — from ML models and agentic/LLM tooling to the applications that ship them. 3 peer-reviewed publications (2025).',
 }
 
 export default function RootLayout({
@@ -13,7 +14,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {/* Set the theme class before paint so there's no flash of the wrong theme.
+            Default = follow the OS preference; a stored choice (from the toggle) wins. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.classList.toggle('dark',t==='dark');}catch(e){}})();`,
+          }}
+        />
+        {children}
+      </body>
     </html>
   )
 }

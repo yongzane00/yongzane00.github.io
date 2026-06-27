@@ -21,6 +21,9 @@ out/
 *.swp
 *.swo
 
+# Claude Code (local working notes — keep out of the public repo)
+.claude/
+
 # OS files
 .DS_Store
 Thumbs.db
